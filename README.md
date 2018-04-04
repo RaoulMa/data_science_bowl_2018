@@ -1,6 +1,6 @@
 # Data Science Bowl 2018
 This Jupyter notebook implements a U-Net shaped convolutional neural network in TensorFlow for 
-nuclei segmentation of the images provided by the 2018 Data Science Bowl. The training/test data can be downloaded from 
+nuclei segmentation of the images provided by the 2018 Data Science Bowl, see
 https://www.kaggle.com/c/data-science-bowl-2018/data. 
 
 ## Abstract

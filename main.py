@@ -53,7 +53,11 @@ if __name__ == "__main__":
     nn_name = args.name      # neural network name
     n_epochs = args.epoch    # number of epochs  
     
-    print(args)
+    # Display versions.
+    print('python version: {}'.format(sys.version))
+    print('tensorflow version: {}'.format(tf.__version__))
+
+    #print(args)
     
     # Basic properties of images/masks. 
     train_df = read_train_data_properties(TRAIN_DIR, IMG_DIR_NAME, MASK_DIR_NAME)

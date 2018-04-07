@@ -10,7 +10,7 @@ For the task we implement a deep neural network of the U-Net type consisting of 
 
 Prior to training the network we resize, normalize and transform the images. We use 10% of the training data for validation. Furthermore, we implement data augmentation by making use of translations, rotations, horizontal/vertical flipping and zoom. Choosing an image size of 384x384 pixels the network requires roughly 30 training epochs before the training seems to converge. The network achieves a score of 0.56/0.352 on the validation/test set. A major reason for the score discrepancy can be explained by overlapping/touching nuclei that are identified as a single nucleous by the current implementation. Furthermore, we have not tuned the hyperparameters, so there is still a lot of room for improvement.
 
-## Understand and run the code
+## Run the code
 
 The code is tested with python 3.6.5, Tensorflow 1.4.1 and Tensorboard 1.7.0. Models are saved in the folder 'saves', logs for Tensorboard are saved in the folder 'logs' and the image data is contained in the folder 'data'. To execute the code the following files are relevant:
 

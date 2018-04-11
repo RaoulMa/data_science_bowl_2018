@@ -12,15 +12,16 @@ Prior to training the network we resize, normalize and transform the images. We 
 
 ## Run the code
 
-The code is tested with python 3.6.5, Tensorflow 1.4.1 and Tensorboard 1.7.0. Models are saved in the folder 'saves', logs for Tensorboard are saved in the folder 'logs' and the image data is contained in the folder 'data'. To execute the code the following files are relevant:
+The code is tested on
+- macOS High Sierra 10.13.4 with python 3.6.5 and tensorflow 1.4.1. 
+- Ubuntu 16.04.4 LTS with python 3.6.4 and tensorflow 1.1.0. 
 
-- sample.sh is a bash script, which trains a model called 'tmp' and makes predictions including the creation of the submission file. You can modify the file for your purposes. 
+Models are saved in the folder 'saves', logs for Tensorboard are saved in the folder 'logs' and the image data is contained in the folder 'data'. To execute the code the following files are relevant:
+- "sample.sh" is a bash script, which trains a model called 'tmp' and makes predictions including the creation of the submission file. You can modify the file for your purposes. 
+- "analysis.ipynb" is a jupyter notebook which can also be used for training the model. In addition it includes code for the analysis and visualization of the problem. 
+- "config.py" contains global variables like the file paths to the image data. You can modify the file for your purposes. 
 
-- analysis.ipynb is a jupyter notebook which can also be used for training the model. In addition it includes code for the analysis and visualization of the problem. 
-
-- config.py contains global variables like the file paths to the image data. You can modify the file for your purposes. 
-
-
+Run the python script "check_tensorflow.py" to check if tensorflow works properly and if it runs on a CPU or GPU.
 
 
 

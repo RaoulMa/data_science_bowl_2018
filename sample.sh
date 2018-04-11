@@ -17,8 +17,7 @@
 #--epoch: argument = number of epochs for training
 
 # Training and prediction for testing purposes on a reduced data set
-python main.py
-    --name tmp \
+python main.py --name tmp \
     --train_imgs 20 \
     --test_imgs 20 \
     --train \

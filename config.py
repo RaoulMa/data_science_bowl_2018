@@ -23,12 +23,12 @@ LOGS_DIR_NAME = 'logs'    # Folder name for TensorBoard summaries
 SAVES_DIR_NAME = 'saves'  # Folder name for storing network parameters
 SEED = 123                # Random seed for splitting train/validation sets
 MB_SIZE = 16              # Mini Batch Size
-LOG_STEP = 0.3
+LOG_STEP = 0.3            # Log Steps
+NN_NAME = 'tmp'           # Default neural network name
+N_EPOCHS = 1.0            # Default number of epochs for training
 
 # Global variables.
 min_object_size = 1       # Minimal nucleous size in pixels
-nn_name = 'tmp'           # Default neural network name
-n_epoch = 1.0             # Default number of epochs for training
 #x_train = []
 #y_train = []
 #x_test = []

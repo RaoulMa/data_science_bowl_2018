@@ -18,8 +18,9 @@ import skimage.transform           # For resizing images
 import skimage.morphology          # For using image labeling
 
 # Import global variables stored in configuration file.
+import config
 from config import TRAIN_DIR, TEST_DIR, IMG_DIR_NAME, MASK_DIR_NAME, SEED, \
-                   min_object_size, nn_name, n_epoch
+                   NN_NAME, N_EPOCHS
                    
 # Import useful methods.
 from utils import read_train_data_properties, read_test_data_properties, \
@@ -33,7 +34,7 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description='U-Net for image segmentation.')
 
-    parser.add_argument('-n', '--name', default=nn_name, nargs='+',
+    parser.add_argument('-n', '--name', default=NN_NAME, nargs='+',
                         help='name of the neural network as an argument')
     parser.add_argument("-l", "--load", action="store_true",
                     help="load a model and continue training") 
@@ -45,7 +46,7 @@ if __name__ == "__main__":
                     help="specify how many train images should be used")
     parser.add_argument("--test_imgs", type=int,
                     help="specify how many test images should be used")
-    parser.add_argument("--epoch", type=float, default=n_epoch,
+    parser.add_argument("--epoch", type=float, default=N_EPOCHS,
                     help="specify how many test images should be used")
     
     args = parser.parse_args()
@@ -196,9 +197,8 @@ if __name__ == "__main__":
         test_pred_rle = []
         test_pred_ids = []
         for n, id_ in enumerate(test_df['img_id']):
-            min_object_size = 30*test_df.loc[n,'img_height']*test_df.loc[n,'img_width']/(256*256)
-            rle = list(mask_to_rle(y_test_pred_original_size[n], 
-                                   min_object_size=min_object_size))
+            config.min_object_size = 30*test_df.loc[n,'img_height']*test_df.loc[n,'img_width']/(256*256)
+            rle = list(mask_to_rle(y_test_pred_original_size[n]))
             test_pred_rle.extend(rle)
             test_pred_ids.extend([id_]*len(rle))
         

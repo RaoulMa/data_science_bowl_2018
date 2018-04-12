@@ -19,7 +19,8 @@ import matplotlib.pyplot as plt    # Python 2D plotting library
 import matplotlib.cm as cm         # Color map
 
 # Import global variables stored in configuration file
-from config import min_object_size, IMG_HEIGHT, IMG_WIDTH
+import config
+from config import IMG_HEIGHT, IMG_WIDTH
 
 """ Collection of methods for data operations.
 
@@ -237,8 +238,8 @@ def get_labeled_mask(mask, cutoff=.5):
     
     # Keep only objects that are large enough.
     (mask_labels, mask_sizes) = np.unique(lab_mask, return_counts=True)
-    if (mask_sizes < min_object_size).any():
-        mask_labels = mask_labels[mask_sizes < min_object_size]
+    if (mask_sizes < config.min_object_size).any():
+        mask_labels = mask_labels[mask_sizes < config.min_object_size]
         for n in mask_labels:
             lab_mask[lab_mask == n] = 0
         lab_mask = skimage.morphology.label(lab_mask > cutoff) 
@@ -315,8 +316,8 @@ def get_iou(y_true_labeled, y_pred_labeled):
 def get_score_summary(y_true, y_pred):
     """Compute the score for a single sample including a detailed summary."""
     
-    y_true_labeled = get_labeled_mask(y_true)  
-    y_pred_labeled = get_labeled_mask(y_pred)  
+    y_true_labeled = get_labeled_mask(y_true)
+    y_pred_labeled = get_labeled_mask(y_pred)
     
     params = get_iou(y_true_labeled, y_pred_labeled)
     iou = params['iou']
@@ -449,14 +450,14 @@ def rle_of_binary(x):
         prev = b
     return run_lengths
 
-def mask_to_rle(mask, cutoff=.5, min_object_size=1.):
+def mask_to_rle(mask, cutoff=.5, min_object_size=config.min_object_size):
     """ Return run length encoding of mask. """
     # segment image and label different objects
     lab_mask = skimage.morphology.label(mask > cutoff)
     
     # Keep only objects that are large enough.
     (mask_labels, mask_sizes) = np.unique(lab_mask, return_counts=True)
-    if (mask_sizes < min_object_size).any():
+    if (mask_sizes < config.min_object_size).any():
         mask_labels = mask_labels[mask_sizes < min_object_size]
         for n in mask_labels:
             lab_mask[lab_mask == n] = 0

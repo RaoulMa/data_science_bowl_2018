@@ -24,11 +24,17 @@ python main.py --name tmp \
     --predict \
     --epoch 1.0
 
-# Continue training and prediction on the full data set where the model is loaded from a file
-#python main.py \
-#--name nn0_384_384_3 \
+# Training and prediction on the full data
+#python main.py --name tmp \
 #--load
 #--train
 #--predict \
-#--epoch 10.0
+#--epoch 1.0
+
+# Continue training and prediction on the full data set where the model is loaded from a file
+#python main.py --name nn0_384_384_3 \
+#--load
+#--train
+#--predict \
+#--epoch 1.0
 

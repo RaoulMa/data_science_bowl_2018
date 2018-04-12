@@ -26,6 +26,7 @@ MB_SIZE = 16              # Mini Batch Size
 LOG_STEP = 0.3            # Log Steps
 NN_NAME = 'tmp'           # Default neural network name
 N_EPOCHS = 1.0            # Default number of epochs for training
+CV_NUM = 10               # Number of cross-validation folds
 
 # Global variables.
 min_object_size = 1       # Minimal nucleous size in pixels

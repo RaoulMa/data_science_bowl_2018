@@ -20,7 +20,7 @@ import skimage.morphology          # For using image labeling
 # Import global variables stored in configuration file.
 import config
 from config import TRAIN_DIR, TEST_DIR, IMG_DIR_NAME, MASK_DIR_NAME, SEED, \
-                   NN_NAME, N_EPOCHS
+                   NN_NAME, N_EPOCHS, CV_NUM
                    
 # Import useful methods.
 from utils import read_train_data_properties, read_test_data_properties, \
@@ -46,19 +46,17 @@ if __name__ == "__main__":
                     help="specify how many train images should be used")
     parser.add_argument("--test_imgs", type=int,
                     help="specify how many test images should be used")
-    parser.add_argument("--epoch", type=float, default=N_EPOCHS,
+    parser.add_argument("-e", "--epochs", type=float, default=N_EPOCHS,
                     help="specify how many test images should be used")
     
     args = parser.parse_args()
-    
     nn_name = args.name      # neural network name
-    n_epochs = args.epoch    # number of epochs  
+    n_epochs = args.epochs    # number of epochs
     
     # Display versions.
     print('python version: {}'.format(sys.version))
     print('tensorflow version: {}'.format(tf.__version__))
-
-    #print(args)
+    print(args)
     
     # Basic properties of images/masks. 
     train_df = read_train_data_properties(TRAIN_DIR, IMG_DIR_NAME, MASK_DIR_NAME)
@@ -87,7 +85,7 @@ if __name__ == "__main__":
         # a pretrained model.
         
         # Implement cross validations
-        cv_num = 10 
+        cv_num = CV_NUM
         kfold = sklearn.model_selection.KFold(cv_num, shuffle=True, 
                                               random_state=SEED)
         
@@ -102,16 +100,14 @@ if __name__ == "__main__":
             x_vld = x_train[valid_index]
             y_vld = y_train[valid_index]
             
-            if i==0: # Choose a certain fold.
+            if i<len(nn_name): # Choose a certain fold.
 
                 if not args.load:
                     # Create and start training of a new model.
                     print('\nStart training a new model.')
     
                     # Create instance of neural network.
-                    u_net = NeuralNetwork(nn_name=nn_name[0], log_step=1.0, 
-                                          input_shape=(384,384,3), 
-                                          output_shape=(384,384,1)) 
+                    u_net = NeuralNetwork(nn_name=nn_name[i], log_step=0.3)
                     u_net.build_graph() # Build graph.
         
                     # Start tensorflow session.
@@ -120,11 +116,11 @@ if __name__ == "__main__":
                         u_net.attach_summary(sess) # Attach summaries.
                         sess.run(tf.global_variables_initializer()) 
                         
-                        if n_epoch > 1.0:
+                        if n_epochs > 1.0:
                             n_epoch_org = 1.0
-                            n_epoch_aug = n_epoch-1.0
+                            n_epoch_aug = n_epochs-1.0
                         else:
-                            n_epoch_org = n_epoch
+                            n_epoch_org = n_epochs
                             n_epoch_aug = 0.0
                             
                         # Training on original data.
@@ -145,11 +141,11 @@ if __name__ == "__main__":
                     print('\nContinue training of a loaded model.')
                     
                     u_net = NeuralNetwork() 
-                    sess = u_net.load_session_from_file(nn_name[0])  
+                    sess = u_net.load_session_from_file(nn_name[i])
                     u_net.attach_saver() 
                     u_net.attach_summary(sess) 
   
-                    for _ in range(int(n_epoch//1.0)):
+                    for _ in range(int(n_epochs//1.0)):
                         # Training on augmented data.
                         u_net.train_graph(sess, x_trn, y_trn, x_vld, y_vld, 
                                           n_epoch=1.0,
@@ -158,7 +154,7 @@ if __name__ == "__main__":
                         # Save parameters, tensors, summaries.
                         u_net.save_model(sess) 
         
-        print('Total running time: ', datetime.datetime.now() - start)
+        print('Total running time: '.format(datetime.datetime.now() - start))
         
     
     if args.predict:

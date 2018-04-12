@@ -18,8 +18,8 @@
 
 # Training and prediction for testing purposes on a reduced data set
 python main.py --name tmp \
-    --train_imgs 20 \
-    --test_imgs 20 \
+    --train_imgs 50 \
+    --test_imgs 50 \
     --train \
     --predict \
     --epoch 1.0
@@ -37,4 +37,10 @@ python main.py --name tmp \
 #--train
 #--predict \
 #--epoch 1.0
+
+# Training of 3 models with 10-fold cross validation for 50 epochs
+#python main.py --name nn0_384_384_3 nn1_384_384_3 nn2_384_384_3 \
+#--train
+#--epoch 50.0
+
 

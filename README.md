@@ -16,7 +16,7 @@ The code is tested on
 
 Models are saved in the folder 'saves', logs for Tensorboard are saved in the folder 'logs' and the image data is contained in the folder 'data'. To execute the code the following files are relevant:
 - "sample.sh" is a bash script, which trains a model called 'tmp' and makes predictions including the creation of the submission file. You can modify the file for your purposes. 
-- "analysis.ipynb" is a jupyter notebook which can also be used for training the model. In addition it includes code for the analysis and visualization of the problem. 
+- "visualisation.ipynb" is a jupyter notebook which can also be used for training the model. In addition it includes code for the analysis and visualization of the problem. 
 - "config.py" contains global variables like the file paths to the image data. You can modify the file for your purposes. 
 
 Run the python script "check_tensorflow.py" to check if tensorflow works properly and if it runs on a CPU or GPU.
@@ -34,16 +34,16 @@ Manual for setting up a Google Cloud VM instance with a NVidia K80 GPU for deep 
 Create a google gloud project and upgrade to a paid account if you have not already done it. Add a NVidia K80 GPU to your quota. Then install the gcloud sdk in order to work with the local console. On the gcloud website create a VM instance for the project with 4 Intel Broadwell vCPUs and one NVidia K80 GPU. In order to allow using jupyter with remote access activate for the instance http traffic, https traffic, add jupyter as a tag, and reserve a static ip address for the instance. Have a look at "https://medium.com/@jamsawamsa/running-a-google-cloud-gpu-for-fast-ai-for-free-5f89c707bae6" which is a great reference. 
 
 To get a list of available disk types, run
-$ gcloud compute disk-types list
+- $ gcloud compute disk-types list
 
 To get a list of available machine types, run
-$ gcloud compute machine-types list
+- $ gcloud compute machine-types list
 
 To list available CPU platforms in given zone, run
-$ gcloud compute zones describe ZONE --format="value(availableCpuPlatforms)"
+- $ gcloud compute zones describe ZONE --format="value(availableCpuPlatforms)"
 
 A list of zones can be fetched by running:
-$ gcloud compute zones list
+- $ gcloud compute zones list
 
 change default zone of the project
 $ gcloud compute project-info add-metadata \

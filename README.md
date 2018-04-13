@@ -214,6 +214,9 @@ Open in local browser the url "http://instance-ip-address:8888" and use the toke
 clone the code
 - $ git clone https://github.com/RaoulMa/Data_Science_Bowl_2018.git
 
+activate virtual environment
+- $ source activate py36
+
 run the code
 - $ python sample.sh
 

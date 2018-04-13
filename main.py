@@ -126,7 +126,9 @@ if __name__ == "__main__":
                         # Training on original data.
                         u_net.train_graph(sess, x_trn, y_trn, x_vld, y_vld, 
                                           n_epoch=n_epoch_org)
-        
+                        
+                        # Save parameters, tensors, summaries.
+                        u_net.save_model(sess)
                         
                         for _ in range(int(n_epoch_aug // 1.0)):
                             # Training on augmented data.

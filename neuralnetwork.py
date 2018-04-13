@@ -12,7 +12,7 @@ import os                          # For filepath, directory handling
 
 # Import global variables stored in configuration file
 from config import CW_DIR, IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS, LOGS_DIR_NAME,\
-                   SAVES_DIR_NAME, MB_SIZE, LOG_STEP
+                   SAVES_DIR_NAME, MB_SIZE, LOG_STEP, NN_NAME
 from utils import get_score, generate_images_and_masks, trsf_proba_to_binary
 
 class NeuralNetwork():
@@ -24,7 +24,7 @@ class NeuralNetwork():
         attach summaries for visualization with TensorBoard. 
     """
 
-    def __init__(self, nn_name='tmp', nn_type='UNet', log_step=LOG_STEP, keep_prob=0.33, 
+    def __init__(self, nn_name=NN_NAME, nn_type='UNet', log_step=LOG_STEP, keep_prob=0.33, 
                  mb_size=MB_SIZE, input_shape=[IMG_HEIGHT,IMG_WIDTH,IMG_CHANNELS], 
                  output_shape=[IMG_HEIGHT,IMG_WIDTH,1]):
         """Instance constructor."""
@@ -418,7 +418,7 @@ class NeuralNetwork():
                                 self.training_tf: True})
             
             # Store losses and scores.
-            if i%int(self.log_step*mb_per_epoch) == 0:
+            if i%int(self.log_step*mb_per_epoch+1.0) == 0:
              
                 self.n_log_step += 1 # Current number of log steps.
                 

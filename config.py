@@ -8,8 +8,8 @@ Description: Configuration file to set all global variables to default values.
 import os    # For filepath, directory handling
 
 # Global constants.
-IMG_WIDTH = 384       # Default image width
-IMG_HEIGHT = 384      # Default image height
+IMG_WIDTH = 256       # Default image width
+IMG_HEIGHT = 256      # Default image height
 IMG_CHANNELS = 3      # Default number of channels
 CW_DIR = os.getcwd()  
 #TRAIN_DIR = os.path.join(os.path.dirname(CW_DIR), 'input', 'stage1_train')

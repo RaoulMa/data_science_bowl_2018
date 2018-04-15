@@ -100,7 +100,7 @@ if __name__ == "__main__":
             x_vld = x_train[valid_index]
             y_vld = y_train[valid_index]
             
-            if i>4 and i<(len(nn_name)+5): # Choose a certain fold.
+            if i<(len(nn_name)): # Choose a certain fold.
                 
                 print('Active Fold: {}'.format(i))
                 

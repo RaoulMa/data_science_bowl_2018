@@ -100,14 +100,16 @@ if __name__ == "__main__":
             x_vld = x_train[valid_index]
             y_vld = y_train[valid_index]
             
-            if i<len(nn_name): # Choose a certain fold.
-
+            if i>4 and i<(len(nn_name)+5): # Choose a certain fold.
+                
+                print('Active Fold: {}'.format(i))
+                
                 if not args.load:
                     # Create and start training of a new model.
                     print('\nStart training a new model.')
     
                     # Create instance of neural network.
-                    u_net = NeuralNetwork(nn_name=nn_name[i], log_step=0.3)
+                    u_net = NeuralNetwork(nn_name=nn_name[i-5], log_step=1.0)
                     u_net.build_graph() # Build graph.
         
                     # Start tensorflow session.
@@ -201,8 +203,7 @@ if __name__ == "__main__":
             test_pred_ids.extend([id_]*len(rle))
         
         print('test_pred_ids.shape = {}'.format(np.array(test_pred_ids).shape))
-        print('test_pred_rle.shape = {}'.format(np.array(test_pred_rle).shape))
-            
+        print('test_pred_rle.shape = {}'.format(np.array(test_pred_rle).shape))            
             
         # Create submission file
         sub = pd.DataFrame()

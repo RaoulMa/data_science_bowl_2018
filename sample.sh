@@ -11,7 +11,16 @@
 #--epochs: argument = number of epochs for training
 
 # Training of 5 models with 10-fold cross validation for 50 epochs
-python main.py --name nn0_256_256 nn1_256_256 nn2_256_256 nn3_256_256 nn4_256_256 \
+#python main.py --name nn0_256_256 \
+#--predict 
+
+# Training of 5 models with 10-fold cross validation for 50 epochs
+#python main.py --name nn0_512_512 nn1_512_512 nn2_512_512 nn3_512_512 nn4_512_512 \
+#--train \
+#--epochs 50.0
+
+# Training of 5 models with 10-fold cross validation for 50 epochs
+python main.py --name nn5_384_384 nn6_384_384 nn7_384_384 nn8_384_384 nn9_384_384 \
 --train \
 --epochs 50.0
 

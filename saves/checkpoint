@@ -1,2 +1,2 @@
-model_checkpoint_path: "/Users/raoulmalm/Desktop/GoogleCloudProject/Data_Science_Bowl_2018/saves/tmp"
-all_model_checkpoint_paths: "/Users/raoulmalm/Desktop/GoogleCloudProject/Data_Science_Bowl_2018/saves/tmp"
+model_checkpoint_path: "/home/raoul/Desktop/Data_Science_Bowl_2018/saves/tmp"
+all_model_checkpoint_paths: "/home/raoul/Desktop/Data_Science_Bowl_2018/saves/tmp"

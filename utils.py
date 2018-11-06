@@ -69,6 +69,7 @@ def read_train_data_properties(train_dir, img_dir_name, mask_dir_name):
 def read_test_data_properties(test_dir, img_dir_name):
     """Read basic properties of test images."""
     tmp = []
+
     for i,dir_name in enumerate(next(os.walk(test_dir))[1]):
 
         img_dir = os.path.join(test_dir, dir_name, img_dir_name)

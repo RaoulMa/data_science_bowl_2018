@@ -100,7 +100,7 @@ if __name__ == "__main__":
             x_vld = x_train[valid_index]
             y_vld = y_train[valid_index]
             
-            if i<(len(nn_name)): # Choose a certain fold.
+            if i<len(nn_name): # Choose a certain fold.
                 
                 print('Active Fold: {}'.format(i))
                 
@@ -109,7 +109,7 @@ if __name__ == "__main__":
                     print('\nStart training a new model.')
     
                     # Create instance of neural network.
-                    u_net = NeuralNetwork(nn_name=nn_name[i-5], log_step=1.0)
+                    u_net = NeuralNetwork(nn_name=nn_name[i], log_step=0.1)
                     u_net.build_graph() # Build graph.
         
                     # Start tensorflow session.

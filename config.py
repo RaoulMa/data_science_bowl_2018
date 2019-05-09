@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Author: Raoul Malm
-Description: Configuration file to set all global variables to default values. 
+Configuration file to set all global variables to default values.
 """
 
 import os    # For filepath, directory handling

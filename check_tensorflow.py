@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Author: Raoul Malm
 Description: Check if tensorflow works with a CPU or GPU.
 """
 import tensorflow as tf

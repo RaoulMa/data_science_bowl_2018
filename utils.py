@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Author: Raoul Malm
-Description: This module contains methods for data operations, to compute the 
+This module contains methods for data operations, to compute the
 score and for the run length encoding of the test predictions. 
 """
 

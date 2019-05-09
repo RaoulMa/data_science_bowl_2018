@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Author: Raoul Malm
 Description: This module implements a neural network as a class structure.
 """
 

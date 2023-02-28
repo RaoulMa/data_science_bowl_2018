@@ -1,0 +1,5 @@
+saves/
+data/
+logs/
+__pycache__/
+_*
